@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Post</title>
+</head>
+<body>
+{%extends "home.html"%}
+
+{%block content%}
+
+<form action="{{url_for('save.save')}}" method="POST">
+
+    <div>
+        <label for="title">Title</label>
+        <br>
+        <input  id="title" type="text" name="title" required>
+    </div>
+    <br style="line-height: 20px;">
+    <div>
+        <label for="text">Text</label>
+        <br>
+        <textarea name="text" id="text" cols="21" rows="3" required></textarea>
+    </div>
+    <br style="line-height: 20px;">
+    <div>
+        <input class="f1" type="submit" value="BlogPost">
+    </div>
+
+</form>
+{%for message in get_flashed_messages()%}
+<div class="alert">{{message}}</div>
+{%endfor%}
+<style>
+    form{
+        margin-left: 300px;
+    }
+    #title{
+        width: 500px;
+       
+    }
+
+    #text{
+        width: 500px;
+    }
+    .f1:hover{
+        border-color:#0088D2;
+        border-top-color: #0088D2;
+        background-color:  #0088D2;
+        opacity: 1.0;
+    }
+
+    .alert{
+      
+        margin-left: 450px;
+        width: 200px;
+        padding: 20px;
+        
+        color: white;
+        animation-name: example;
+        animation-duration: 4s;
+    }
+    @keyframes example{
+        from {background-color:seagreen;}
+        to {background-color: red;}
+    }
+ 
+        
+</style>
+
+{%endblock%}
+</body>
+</html>

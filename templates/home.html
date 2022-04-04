@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body style="font-family: Arial, Helvetica, sans-serif;">
+<nav>
+    <a href="{{url_for('second.home')}}">Home</a>
+    <a href="{{url_for('about.about')}}">About Us</a>
+    {%if session['login']%}
+        <a href="{{url_for('logout1.logout')}}">Log Out</a>
+    {%else%}
+    <a href="{{url_for('login.login')}}">Login</a>
+    <a href="{{url_for('register1.register')}}">Register</a>
+    {%endif%} 
+    
+    {%if session['login']%}
+        <a href="{{url_for('blog.blog')}}">Create Post</a>
+    {%endif%}
+   
+</nav>
+<style>
+    a{
+        color: #0098DA;
+        text-decoration: none;
+        padding: 20px;
+    }
+    nav{
+        margin: 20px -5px;
+    }
+    a:hover{
+        color:#006FB1 ;
+    }
+</style>
+{%block content%}
+<div class="home">
+    <p style="font-size: 5px; color:#dddddd">d</p>
+    <p>Blog App Blog<br><span id="first">Welcome to our App's Blog</span></p>
+</div>
+<br style="line-height: 200px;">
+{%for da in session['data']%}
+<div class="blog">
+<span id="title">{{da[2]}}</span>
+<br>
+<span id="name">Written By:{{da[0]}}</span>
+<br>
+<span id="date">Published On:{{da[1]}}</span>
+<br>
+<span id="content">{{da[3]}}</span>
+
+<!-- {%if da[4]==session['email']%}
+
+{%endif%} -->
+</div>
+<br style="line-height: 200px;">
+{%endfor%}
+
+<style>
+    .home{
+        
+        margin-left: -20px;
+        position: relative;
+        left: 325px;
+        width:800px;
+        height: 150px;
+        background-color: #dddddd;
+        font-size: 30px;
+        
+    }
+    #first{
+        font-size: 15px;
+        line-height: -5px;
+        
+    }
+    p{
+        margin-left: 40px;
+    }
+
+    .blog{
+    
+        position: relative;
+        left:305px;
+        background-color:rgb(245, 231, 187);
+        width: 800px;
+
+    }
+    #title{
+        line-height: 40px;
+        font-size: 30px;
+        color:#0098DA;
+        margin-left: 20px;
+    }
+    #name{
+        font-size: 15px;
+        color:#0098DA;
+        margin-left: 20px;
+    }
+   
+    #date{
+        font-size: 15px;
+        margin-left: 20px;
+    }
+    #content{
+        font-size: 15px;
+        line-height: 50px;
+        margin-left: 20px;
+    }
+   
+    .link{
+        margin-left: -20px;
+    }
+    
+</style>
+
+{%endblock%}
+
+</body>
+</html>

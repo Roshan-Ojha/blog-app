@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+{%extends "home.html"%}
+
+
+{% block content%}
+
+<form action="{{url_for('check.check')}}" method="POST">
+<label for="mail">Email: </label>
+<input id="mail" type="email" name="mail" placeholder="Name"  required>
+<label for="pass">Password: </label>
+<input id="pass" type="password" name="pass" placeholder="Password" required>
+<input type="submit"  value="Login">
+</form>
+{% for message in get_flashed_messages()%}
+<div class="alert">{{message}}</div>
+{%endfor%}
+<style>
+    .alert{
+        line-height: 5px;
+        margin-left: 150px;
+        width: 500px;
+        padding: 20px;
+        
+        color: white;
+        animation-name: example;
+        animation-duration: 4s;
+    }
+    @keyframes example
+    {
+        from {background-color:seagreen;}
+        to {background-color: red;}
+    }
+</style>
+
+{%endblock%}
+</body>
+</html>

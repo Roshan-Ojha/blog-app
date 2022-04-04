@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+    {%extends "home.html"%}
+
+{%block content%}
+<form action="{{url_for('add_detail.home1')}}" method="POST">
+    <label for="name">Name:</label>
+    <input id="name" type="text" name="name" placeholder="Name" required>
+    <br>
+    <label for="mail">Email:</label>
+    <input id="mail" type="email" name="mail" placeholder="Email" required>
+    <br>
+    <label for="pass">Password:</label>
+    <input id="pass" type="password" name="pass1" placeholder="Password" required>
+    <label for="pass1">Confirm&nbsp;Password:</label>
+    <input id="pass1" type="password" name="pass2" placeholder="Password" required>
+    <br>
+    <input id="sub" type="submit" value="Submit">
+
+</form>
+
+{%for message in get_flashed_messages()%}
+<div class="alert">{{message}}</div>
+{%endfor%}
+
+<style>
+    form{
+        
+        width: 500px;
+        margin: 0 auto;
+        background-color: #dddddd;
+    }
+    label{
+        line-height: 35px;
+        margin: 50px
+    }
+
+   #sub{
+       margin-left: 200px;
+   }
+
+   .alert{
+      
+       margin-left: 450px;
+       width: 200px;
+       padding: 20px;
+       
+       color: white;
+       animation-name: example;
+       animation-duration: 4s;
+   }
+   @keyframes example{
+       from {background-color:seagreen;}
+       to {background-color: red;}
+   }
+
+</style>
+
+{%endblock%}
+
+</body>
+</html>
